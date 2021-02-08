@@ -60,7 +60,7 @@ def train_model(model, X_train, y_train, name, config):
         df.to_csv('model/' + name + ' loss.csv', encoding='utf-8', index=False)
         mlflow.log_param("Run_id", run.info.run_id)
         with open('./data/train.csv.dvc', 'r') as file:
-            data_version = file.read()
+            data_version = file.read().replace('\n', '\n')
         mlflow.log_param('Data Version (dvc)', data_version)
         #mlflow.log_text(data_version, "data_version.txt")
         #mlflow.log_artifact("./picture.png")        
