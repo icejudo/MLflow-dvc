@@ -60,8 +60,9 @@ def train_model(model, X_train, y_train, name, config):
         df.to_csv('model/' + name + ' loss.csv', encoding='utf-8', index=False)
         mlflow.log_param("Run_id", run.info.run_id)
         with open('./data/train.csv.dvc', 'r') as file:
-            data = file.read().replace('\n', '')
-        mlflow.log_param('dvc file', data)
+            data_version = file.read().replace('\n', '')
+        #mlflow.log_param('Data Version (dvc)', data_version)
+        mlflow.log_text(data_version, "data_version.txt")
         #mlflow.log_artifact("./picture.png")        
         #mlflow.keras.log_model(keras_model=model, artifact_path="model")
 
