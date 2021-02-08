@@ -62,8 +62,8 @@ def train_model(model, X_train, y_train, name, config):
 
         """ Save as parameter """
         with open('./data/train.csv.dvc', 'r') as file:
-            data_version = file.read()
-        mlflow.log_param('Data_Version_dvc)', data_version)
+            data_version = file.read().replace('\n', '')
+        mlflow.log_param('Data Version dvc', data_version)
 
         """ Save as artifact """
         """
