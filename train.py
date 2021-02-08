@@ -58,14 +58,15 @@ def train_model(model, X_train, y_train, name, config):
         model.save('model/' + name + '.h5')
         df = pd.DataFrame.from_dict(hist.history)
         df.to_csv('model/' + name + ' loss.csv', encoding='utf-8', index=False)
+        
         mlflow.log_param("Run_id", run.info.run_id)
 
-        """ Save as parameter """
+        """ Save dvc as parameter """
         with open('./data/train.csv.dvc', 'r') as file:
             data_version = file.read().replace('\n', '')
         mlflow.log_param('Data Version dvc', data_version)
 
-        """ Save as artifact """
+        """ Save dvc as artifact """
         """
         with open('./data/train.csv.dvc', 'r') as file:
             data_version = file.read()
