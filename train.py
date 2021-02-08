@@ -61,8 +61,8 @@ def train_model(model, X_train, y_train, name, config):
         mlflow.log_param("Run_id", run.info.run_id)
         with open('./data/train.csv.dvc', 'r') as file:
             data_version = file.read()
-        #mlflow.log_param('Data Version (dvc)', data_version)
-        mlflow.log_text(data_version, "data_version.txt")
+        mlflow.log_param('Data Version (dvc)', data_version)
+        #mlflow.log_text(data_version, "data_version.txt")
         #mlflow.log_artifact("./picture.png")        
         #mlflow.keras.log_model(keras_model=model, artifact_path="model")
 
