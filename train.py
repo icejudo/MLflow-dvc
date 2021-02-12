@@ -62,7 +62,7 @@ def train_model(model, X_train, y_train, name, config):
         mlflow.log_param("Run_id", run.info.run_id)
 
         """ Save dvc as parameter """
-        with open('/home/VICOMTECH/icejudo/PROYECTOS/Proyecto/MiRepoGithub/dvc_repo/data.dvc', 'r') as file:
+        with open('/home/VICOMTECH/icejudo/PROYECTOS/MiRepoGithub/dvc_repo/data.dvc', 'r') as file:
             data_version = file.read().replace('\n', '')
         mlflow.log_param('Data Version dvc', data_version)
 
@@ -132,8 +132,8 @@ def main(argv):
 
     lag = 12
     config = {"batch": 256, "epochs": 50}
-    file1 = '/home/VICOMTECH/icejudo/PROYECTOS/Proyecto/MiRepoGithub/MLflow-dvc-data/data/train.csv'
-    file2 = '/home/VICOMTECH/icejudo/PROYECTOS/Proyecto/MiRepoGithub/MLflow-dvc-data/data/test.csv'
+    file1 = '/home/VICOMTECH/icejudo/PROYECTOS/MiRepoGithub/MLflow-dvc-data/data/train.csv'
+    file2 = '/home/VICOMTECH/icejudo/PROYECTOS/MiRepoGithub/MLflow-dvc-data/data/test.csv'
     X_train, y_train, _, _, _ = process_data(file1, file2, lag)
 
     if args.model == 'lstm':
